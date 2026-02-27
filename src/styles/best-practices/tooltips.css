@@ -27,7 +27,7 @@ button.notifications {
 
   & + [role='tooltip'] {
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none;
     position: absolute;
     position-anchor: --notifications;
 
@@ -62,7 +62,7 @@ button.notifications {
   &:is(:hover, :focus-visible) + [role='tooltip'],
   & + [role='tooltip']:hover {
     opacity: 1;
-    visibility: visible;
+    pointer-events: all;
 
     transition-delay: 0s;
   }
