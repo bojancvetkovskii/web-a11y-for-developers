@@ -1,0 +1,104 @@
+.clearable-input {
+  display: flex;
+  width: fit-content;
+  border: 1px solid var(--brand-secondary);
+  border-radius: 0.5rem;
+
+  &:has(input:focus) {
+    outline: 1px solid var(--brand-secondary);
+  }
+
+  input {
+    flex: 1;
+    border: none !important;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
+
+  button.clear {
+    width: 32px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+
+    &:hover {
+      background-color: var(--brand-slate);
+    }
+
+    &:active {
+      background-color: hsl(from var(--brand-slate) h s 90%);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--brand-secondary);
+    }
+  }
+}
+
+.options-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  li {
+    max-width: 40ch;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    border: 1px solid var(--brand-secondary);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+
+    &:first-child {
+      margin-top: 1rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    button.remove {
+      width: 3ch;
+      aspect-ratio: 1;
+      border: 2px solid var(--brand-primary);
+      border-radius: 0.5rem;
+      color: var(--brand-primary);
+      font-weight: 700;
+
+      &:hover {
+        background-color: var(--brand-slate);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--brand-primary);
+        outline-offset: 2px;
+
+        background-color: var(--brand-primary);
+        color: white;
+      }
+    }
+  }
+
+  & + button {
+    background-color: var(--brand-secondary);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+
+    &:focus-visible {
+      outline: 2px solid var(--brand-secondary);
+      outline-offset: 2px;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+  }
+}

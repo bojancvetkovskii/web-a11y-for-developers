@@ -1,0 +1,31 @@
+/* RED - Accessibility violation */
+img:not([alt]) {
+  outline: 6px solid red;
+  outline-offset: 2px;
+}
+
+/* ORANGE - Warning, could be a false positive */
+svg:not([aria-hidden='true']):not([aria-label]):not([aria-labelledby]) {
+  outline: 6px solid darkorange;
+  outline-offset: 2px;
+}
+
+button[btn-contrast] {
+  display: inline-block;
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary) / 0.8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &:active {
+    scale: 0.95;
+  }
+
+  &:focus-visible {
+    outline: none; /* This will cause you trouble in High Contrast mode */
+    /* outline-color: transparent; <- Use this instead */
+
+    box-shadow: 0px 0px 10px 10px var(--brand-primary);
+  }
+}

@@ -1,78 +1,76 @@
-main.forms {
-  .form-control {
-    display: grid;
-    gap: 0.25rem;
-    min-width: fit-content;
+.form-control {
+  display: grid;
+  gap: 0.25rem;
+  min-width: fit-content;
+}
+
+label {
+  display: block;
+  width: fit-content;
+  font-weight: 600;
+}
+
+input {
+  min-width: 300px;
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+
+  border: 1px solid var(--brand-secondary);
+  border-radius: 0.5rem;
+
+  &:focus {
+    outline-color: var(--brand-secondary);
   }
 
-  label {
-    display: block;
-    width: fit-content;
-    font-weight: 600;
+  &::placeholder {
+    font-size: 14px;
+    font-weight: normal;
   }
 
-  input {
-    min-width: 300px;
-    width: 100%;
-    padding: 0.45rem 0.75rem;
+  @media screen and (width < 450px) {
+    min-width: unset;
+  }
+}
 
-    border: 1px solid var(--brand-secondary);
-    border-radius: 0.5rem;
+input + [aria-live] {
+  &:not(:empty)::before {
+    content: '⚠';
+    padding-right: 0.5ch;
+  }
+}
 
-    &:focus {
-      outline-color: var(--brand-secondary);
-    }
+[type='submit'],
+button[hw-toggle] {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
 
-    &::placeholder {
-      font-size: 14px;
-      font-weight: normal;
-    }
-
-    @media screen and (width < 450px) {
-      min-width: unset;
-    }
+  &:focus-visible {
+    outline: 2px solid var(--brand-primary);
+    outline-offset: 2px;
   }
 
-  input + [aria-live] {
-    &:not(:empty)::before {
-      content: '⚠';
-      padding-right: 0.5ch;
-    }
+  &:disabled {
+    background-color: #666;
+    pointer-events: none;
+    cursor: default;
   }
 
-  [type='submit'],
-  button[hw-toggle] {
-    display: block;
-    padding: 0.5rem 1rem;
-    background-color: var(--brand-primary);
-    color: white;
-    border: none;
-    border-radius: 0.5rem;
-
-    &:focus-visible {
-      outline: 2px solid var(--brand-primary);
-      outline-offset: 2px;
-    }
-
-    &:disabled {
-      background-color: #666;
-      pointer-events: none;
-      cursor: default;
-    }
-
-    &:active {
-      scale: 0.95;
-    }
+  &:active {
+    scale: 0.95;
   }
+}
 
-  .spinner {
-    width: 2.5rem;
-    aspect-ratio: 1 / 1;
-    border: 5px solid var(--brand-primary);
-    border-left-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
+.spinner {
+  width: 2.5rem;
+  aspect-ratio: 1 / 1;
+  border: 5px solid var(--brand-primary);
+  border-left-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {

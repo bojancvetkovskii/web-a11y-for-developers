@@ -15,6 +15,7 @@ optionsList.addEventListener('click', (e) => {
   if (!removeButton) return;
 
   const currentOptions = Array.from(optionsList.querySelectorAll('li'));
+  const deletingLastElement = currentOptions.length === 1;
 
   const listElement = removeButton.parentElement;
   const idx = currentOptions.indexOf(listElement);
@@ -27,11 +28,17 @@ optionsList.addEventListener('click', (e) => {
     // Deleting last element - move focus to previous element
     newIdx = Math.max(idx - 1, 0);
   } else {
+    // Deleting any other element - move focus to next element
     newIdx = idx + 1;
   }
 
-  // Focus the new item (depends on what you need to focus on your own items)
-  currentOptions[newIdx].querySelector('button.remove')?.focus();
+  if (deletingLastElement) {
+    // Focus an "Add item" button or something similar
+    resetListButton.focus();
+  } else {
+    // Focus the new item (depends on what you need to focus on your own items)
+    currentOptions[newIdx].querySelector('button.remove')?.focus();
+  }
   // Delete the clicked item
   listElement.remove();
 });

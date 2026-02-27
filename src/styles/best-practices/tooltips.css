@@ -1,0 +1,114 @@
+button.notifications {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 100dvh;
+  transition: background-color 0.3s ease;
+
+  anchor-name: --notifications;
+
+  .count {
+    position: absolute;
+    position-anchor: --notifications;
+
+    left: anchor(right);
+    top: anchor(top);
+    transform: translateX(-100%);
+
+    width: 3ch;
+    height: 3ch;
+    display: grid;
+    place-items: center;
+    background-color: var(--brand-primary);
+    color: white;
+    border-radius: 100dvh;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  & + [role='tooltip'] {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    position-anchor: --notifications;
+
+    top: anchor(center);
+    left: anchor(right);
+    transform: translateY(-50%);
+
+    max-width: 30ch;
+    padding-left: 0.5rem;
+
+    transition: opacity 0.3s ease;
+    transition-delay: 0.1s;
+
+    .tooltip-content {
+      background-color: var(--brand-secondary);
+      border-radius: 0.25rem;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      font-size: 14px;
+      line-height: normal;
+      text-align: center;
+      user-select: none;
+    }
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:has(+ [role='tooltip']:hover) {
+    background-color: var(--brand-slate);
+  }
+
+  &:is(:hover, :focus-visible) + [role='tooltip'],
+  & + [role='tooltip']:hover {
+    opacity: 1;
+    visibility: visible;
+
+    transition-delay: 0s;
+  }
+
+  &:focus-visible {
+    background-color: hsl(from var(--brand-slate) h s 85%);
+    outline-color: transparent;
+  }
+}
+
+button[data-toggletip] {
+  background-color: var(--brand-secondary);
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  anchor-name: --demo-toggletip;
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-secondary);
+    outline-offset: 2px;
+  }
+
+  [role='status'] {
+    position: absolute;
+    position-anchor: --demo-toggletip;
+
+    top: anchor(top);
+    left: calc(anchor(right) + 0.5rem);
+
+    max-width: 30ch;
+    background-color: var(--brand-secondary);
+    border-radius: 0.25rem;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 14px;
+    text-align: center;
+    user-select: none;
+    cursor: default;
+
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+    &:empty {
+      opacity: 0;
+      transition-duration: 0s;
+    }
+  }
+}

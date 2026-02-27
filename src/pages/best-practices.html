@@ -29,7 +29,10 @@
     <!-- Page specific assets: Best Practices -->
     <link rel="stylesheet" href="../styles/forms.css" />
 
-    <link rel="stylesheet" href="../styles/best-practices.css" />
+    <link rel="stylesheet" href="../styles/best-practices/focus-management.css" />
+    <link rel="stylesheet" href="../styles/best-practices/tooltips.css" />
+    <link rel="stylesheet" href="../styles/best-practices/tips-tricks.css" />
+
     <script defer src="../best-practices/clearable-inputs.js"></script>
     <script defer src="../best-practices/deletable-options.js"></script>
     <script defer src="../best-practices/toggletips.js"></script>
@@ -92,7 +95,7 @@
             <label for="clearable-name">Name</label>
             <div class="clearable-input">
               <input type="text" id="clearable-name" placeholder="Your name here..." />
-              <button class="clear invisible" aria-label="Clear">&times;</button>
+              <button type="button" class="clear invisible" aria-label="Clear">&times;</button>
             </div>
           </form>
         </section>
@@ -176,6 +179,7 @@
               viewBox="0 0 48 48"
               height="48"
               width="48"
+              aria-hidden="true"
             >
               <path
                 fill="#000000"
@@ -190,14 +194,17 @@
             </svg>
             <span id="notif-count" class="count">3</span>
           </button>
-          <div role="tooltip" id="tooltip-notif">Notifications</div>
+
+          <div role="tooltip" id="tooltip-notif">
+            <div class="tooltip-content">Notifications</div>
+          </div>
         </section>
 
         <section class="mb-5" aria-labelledby="tooltips-descriptions">
           <h3 id="tooltips-descriptions">Tooltips as descriptions</h3>
 
           <p>
-            When we use tooltips as helpful additional descriptions, we need to of course
+            When we use Tooltips as helpful additional descriptions, we need to of course
             programmatically connect it with the button using <b>aria-describedby</b>.
           </p>
 
@@ -218,6 +225,7 @@
               viewBox="0 0 48 48"
               height="48"
               width="48"
+              aria-hidden="true"
             >
               <path
                 fill="#000000"
@@ -235,23 +243,30 @@
           </button>
 
           <div role="tooltip" id="tooltip-notif-hint" style="position-anchor: --notifications-hint">
-            Check out the latest activity across your network
+            <div class="tooltip-content">Check out the latest activity across your network</div>
           </div>
         </section>
 
         <section aria-labelledby="toggletips">
           <h3 id="toggletips">Toggletips</h3>
 
-          <p class="pb-4">TODO</p>
+          <p class="pb-4">
+            Similar to Tooltips, Toggletips toggle their content <b>on the "click" event</b>.
+            <br />
+            They are usually presented as an <b>"info" icon button</b> whose sole purpose is to
+            toggle the content of the Toggletip.
+          </p>
 
-          <form class="flex items-center gap-2">
-            <label for="emp-id">Employee ID</label>
-            <input
-              id="emp-id"
-              type="text"
-              inputmode="numeric"
-              placeholder="Enter your Employee ID..."
-            />
+          <form class="flex items-end gap-2 *:last:mb-1.5">
+            <div class="form-control">
+              <label for="emp-id">Employee ID</label>
+              <input
+                id="emp-id"
+                type="text"
+                inputmode="numeric"
+                placeholder="Enter your Employee ID..."
+              />
+            </div>
 
             <button
               type="button"
@@ -262,6 +277,134 @@
               <div role="status"></div>
             </button>
           </form>
+        </section>
+      </section>
+
+      <hr />
+
+      <section class="container" aria-labelledby="tips-tricks">
+        <h2 id="tips-tricks">Tips & Tricks</h2>
+
+        <p>
+          Here are some <b>quick small wins</b> you can integrate into your workflow to minimize
+          accessibility issues in your codebase.
+        </p>
+
+        <section aria-labelledby="css-a11y-lint" class="mb-10 mt-5">
+          <h3>Missing label/alt-text indicators</h3>
+
+          <p>
+            We can utilize CSS selectors to help us identify the low-handing fruit of accessibility
+            issues.
+          </p>
+
+          <div class="my-5 grid gap-3 *:last:ml-4">
+            <h4 class="text-lg font-medium">Images without an `alt` attribute</h4>
+
+            <img width="60" height="60" src="../../public/tdl-logo.jpg" />
+          </div>
+
+          <div class="my-5 grid gap-3 *:last:ml-4">
+            <h4 class="text-lg font-medium">SVG icons without an accessible label</h4>
+
+            <svg
+              class="size-8"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 48 48"
+              height="48"
+              width="48"
+            >
+              <path
+                fill="#000000"
+                d="M43.3289 32.958c-0.1742 -0.21 -0.3454 -0.42 -0.5134 -0.6226 -2.3101 -2.794 -3.7076 -4.4805 -3.7076 -12.3901 0 -4.0951 -0.9797 -7.4552 -2.9107 -9.9753 -1.4237 -1.8616 -3.3485 -3.2739 -5.8853 -4.3176 -0.0327 -0.0182 -0.0617 -0.042 -0.0861 -0.0704C29.3133 2.5265 26.8164 0.48 24.0002 0.48c-2.8161 0 -5.312 2.0465 -6.2245 5.0989 -0.0243 0.0273 -0.0529 0.0504 -0.085 0.0682 -5.92 2.4371 -8.797 7.1128 -8.797 14.2949 0 7.9129 -1.3955 9.5994 -3.7076 12.3902 -0.168 0.2027 -0.3392 0.4085 -0.5135 0.6227 -0.4502 0.543 -0.7355 1.2037 -0.822 1.9037 -0.0865 0.7 0.0293 1.4101 0.3338 2.0465 0.6478 1.365 2.0286 2.2123 3.6046 2.2123h32.434c1.5687 0 2.9401 -0.8463 3.59 -2.205 0.3059 -0.6364 0.4227 -1.3472 0.3369 -2.0481 -0.0858 -0.7008 -0.3706 -1.3623 -0.821 -1.9063Z"
+                stroke-width="1"
+              ></path>
+              <path
+                fill="#000000"
+                d="M23.9995 47.52c1.5171 -0.0012 3.0056 -0.413 4.3076 -1.1917 1.302 -0.7788 2.3688 -1.8953 3.0877 -3.2313 0.0338 -0.0641 0.0505 -0.1357 0.0486 -0.2081 -0.0021 -0.0725 -0.0229 -0.1431 -0.0603 -0.2052 -0.0373 -0.0619 -0.0902 -0.1132 -0.1532 -0.1488 -0.0631 -0.0357 -0.1344 -0.0544 -0.2068 -0.0542H16.978c-0.0725 -0.0003 -0.144 0.0182 -0.2072 0.0537 -0.0631 0.0356 -0.1161 0.0868 -0.1536 0.1489 -0.0377 0.062 -0.0584 0.1328 -0.0605 0.2053 -0.0021 0.0725 0.0147 0.1442 0.0486 0.2084 0.7186 1.3358 1.7854 2.4523 3.0873 3.2311 1.3017 0.7786 2.79 1.1906 4.3069 1.1919Z"
+                stroke-width="1"
+              ></path>
+            </svg>
+          </div>
+        </section>
+
+        <section aria-labelledby="visually-hidden" class="mb-10">
+          <h3 id="visually-hidden">Visually hidden elements</h3>
+
+          <p>
+            We can utilize visually hidden elements to provide helpful additional context to users
+            that rely on assistive technologies.
+          </p>
+
+          <p>
+            One way to make an element visually hidden is to use the
+            <a href="https://v1.tailwindcss.com/docs/screen-readers" target="_blank">sr-only</a> CSS
+            class.
+          </p>
+
+          <div class="my-5 grid gap-2 *:last:ml-1">
+            <h4 class="text-lg font-medium">"Loading" message within a loading indicator</h4>
+
+            <div>
+              <div class="spinner"></div>
+              <span class="sr-only">Loading images...</span>
+            </div>
+          </div>
+
+          <div class="my-5 grid gap-2">
+            <h4 class="text-lg font-medium">Invisible Live regions that announce changes</h4>
+
+            <i>Check out this section using the DevTools.</i>
+
+            <div role="status">
+              <span class="sr-only">15 results found</span>
+            </div>
+          </div>
+
+          <div class="my-5 grid justify-items-start gap-2">
+            <h4 class="text-lg font-medium">
+              Providing additional context to vaguely named links/buttons
+            </h4>
+
+            <a href="https://testdevlab.com" class="inline-block">
+              Read more <span class="sr-only">about the company I work at</span>
+            </a>
+          </div>
+        </section>
+
+        <section aria-labelledby="high-contrast-mode" class="mb-10">
+          <h3 id="high-contrast-mode">High Contrast mode</h3>
+
+          <p class="pb-2">
+            <span class="sr-only">Learn more about</span>
+            <a
+              href="https://support.microsoft.com/en-us/windows/turn-high-contrast-mode-on-or-off-in-windows-909e9d89-a0f9-a3a9-b993-7a6dcee85025"
+              target="_blank"
+              >High Contrast mode</a
+            >
+            on Windows.
+            <br />
+            <span class="sr-only">Learn more about</span>
+            <a href="https://chromestatus.com/feature/5757293075365888" target="_blank">
+              forced colors mode</a
+            >
+            on Chromium browsers.
+          </p>
+
+          <p>
+            The below button has a custom focus indicator implemented using
+            <span class="code">box-shadow</span>.
+            <br />
+            It also has its outline disabled with <span class="code">outline: none;</span>
+          </p>
+
+          <p class="pb-3">
+            Try enabling High Contrast mode (if you are on a Windows machine) or forced colors mode
+            (on a Chrome browser) and focusing on the button - what do you notice?
+          </p>
+
+          <button btn-contrast>I have a fancy focus</button>
         </section>
       </section>
     </main>
