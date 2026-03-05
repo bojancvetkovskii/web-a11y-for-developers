@@ -22,7 +22,7 @@
 
     <script defer>
       document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('.current-year').textContent = new Date().getFullYear();
+        document.querySelector('#current-year').textContent = new Date().getFullYear();
       });
     </script>
 
@@ -70,7 +70,7 @@
     </header>
 
     <main id="main-content" tabindex="-1">
-      <section class="container" aria-labelledby="">
+      <section class="container" aria-labelledby="focus-management">
         <h2 id="focus-management">Focus management</h2>
 
         <p class="pb-2">
@@ -291,7 +291,7 @@
         </p>
 
         <section aria-labelledby="css-a11y-lint" class="mb-10 mt-5">
-          <h3>Missing label/alt-text indicators</h3>
+          <h3 id="css-a11y-lint">Missing label/alt-text indicators</h3>
 
           <p>
             We can utilize CSS selectors to help us identify the low-handing fruit of accessibility
@@ -410,7 +410,7 @@
     </main>
 
     <footer class="py-3 text-center font-semibold">
-      <p>Web A11y for Devs, <span class="current-year"></span></p>
+      <p>Web A11y for Devs, <span id="current-year"></span></p>
     </footer>
   </body>
 </html>
