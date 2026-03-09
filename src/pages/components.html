@@ -38,6 +38,15 @@
 
     <link rel="stylesheet" href="../components/modal/native-modal/style.css" />
     <script defer src="../components/modal/native-modal/native-modal.js"></script>
+
+    <link rel="stylesheet" href="../components/bonus-components/switch/style.css" />
+    <script defer src="../components/bonus-components/switch/switch.js"></script>
+
+    <link rel="stylesheet" href="../components/bonus-components/dropdown/style.css" />
+    <script defer src="../components/bonus-components/dropdown/dropdown.js"></script>
+
+    <link rel="stylesheet" href="../components/bonus-components/autocomplete/style.css" />
+    <script defer src="../components/bonus-components/autocomplete/autocomplete.js"></script>
   </head>
 
   <body class="min-h-dvh">
@@ -462,6 +471,94 @@
             </div>
           </div>
         </section>
+      </section>
+
+      <hr />
+
+      <section class="container" aria-labelledby="bonus-components">
+        <h2 id="bonus-components">Bonus components</h2>
+
+        <p class="pb-4">Extra components to practice accessible patterns.</p>
+
+        <h3 id="switch-component">Switch</h3>
+
+        <p class="pb-4">
+          An <b>accessible Switch</b> using <span class="code">role="switch"</span> and
+          <span class="code">aria-checked</span> as its single source of truth.
+        </p>
+
+        <button type="button" class="switch" role="switch" aria-checked="false">
+          <span class="switch-track" aria-hidden="true">
+            <span class="switch-thumb" aria-hidden="true"></span>
+          </span>
+          <span class="switch-label">Enable notifications</span>
+        </button>
+
+        <h3 id="dropdown-component" class="mt-8">Dropdown (Menu)</h3>
+
+        <p class="pb-4">
+          A <b>menu dropdown</b> with a trigger button and a popup menu positioned under it using
+          <b>CSS Anchor Positioning</b>. Items use <b>roving tabindex</b> for keyboard navigation.
+        </p>
+
+        <div class="dropdown" data-dropdown>
+          <button
+            type="button"
+            id="dropdown-trigger-1"
+            class="dropdown-trigger"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-controls="dropdown-menu-1"
+          >
+            Account
+          </button>
+
+          <div
+            id="dropdown-menu-1"
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="dropdown-trigger-1"
+          >
+            <button type="button" role="menuitem" tabindex="-1">Profile</button>
+            <button type="button" role="menuitem" tabindex="-1">Settings</button>
+            <button type="button" role="menuitem" tabindex="-1">Log out</button>
+          </div>
+        </div>
+
+        <h3 id="autocomplete-component" class="mt-8">Autocomplete</h3>
+
+        <p class="pb-4">
+          A <b>combobox</b> with filtered suggestions, <b>aria-activedescendant</b> for the
+          highlighted option, and <b>CSS Anchor Positioning</b> for the list. Input is debounced for
+          search.
+        </p>
+
+        <div
+          class="autocomplete"
+          data-autocomplete
+          data-suggestions='["Apple", "Apricot", "Banana", "Blackberry", "Blueberry", "Cherry", "Cranberry", "Grape", "Lemon", "Lime", "Mango", "Melon", "Orange", "Peach", "Pear", "Plum", "Raspberry", "Strawberry"]'
+        >
+          <label for="autocomplete-input-1" class="block pb-1 font-semibold">Search fruit</label>
+          <input
+            id="autocomplete-input-1"
+            type="text"
+            class="autocomplete-input"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="autocomplete-list-1"
+            aria-autocomplete="list"
+            aria-activedescendant=""
+            autocomplete="off"
+          />
+          <div
+            id="autocomplete-list-1"
+            class="autocomplete-listbox"
+            role="listbox"
+            aria-label="Suggestions"
+          >
+            <!-- Options rendered by JS -->
+          </div>
+        </div>
       </section>
     </main>
 

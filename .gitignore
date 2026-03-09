@@ -33,5 +33,8 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # VSCode based IDEs
 .vscode
 
+# Cursor
+.cursor
+
 # Finder (MacOS) folder config
 .DS_Store
