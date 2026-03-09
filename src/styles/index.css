@@ -77,6 +77,18 @@ a[target='_blank']::after {
   mask-size: contain;
 }
 
+a[download]::after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.3ch;
+  height: 1.25ch;
+  aspect-ratio: 1;
+  background-color: var(--brand-primary);
+  mask-image: url('../../public/pdf.svg');
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
 nav li a[aria-current='page'] {
   font-weight: 600;
   text-decoration: underline;
