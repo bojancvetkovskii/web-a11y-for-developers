@@ -20,7 +20,7 @@
     cursor: pointer;
     text-align: start;
     font-weight: 700;
-    transition-property: color, background, border-color, border-radius;
+    transition-property: color, background-color, border-color, border-radius;
 
     &::after {
       content: '';
@@ -84,7 +84,7 @@
   }
 }
 
-:is(.accordion, .accordion-item):has(.trigger[aria-expanded='true']) {
+.accordion:has(.trigger[aria-expanded='true']) {
   .panel {
     grid-template-rows: 1fr;
   }
