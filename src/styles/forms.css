@@ -24,7 +24,8 @@ input {
 
   &::placeholder {
     font-size: 14px;
-    font-weight: normal;
+    font-weight: 400;
+    color: color-mix(in oklch, var(--brand-secondary) 85%, transparent);
   }
 
   @media screen and (width < 450px) {
