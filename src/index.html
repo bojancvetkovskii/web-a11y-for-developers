@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/jpeg" href="../public/tdl-logo.jpg" />
+
+    <title>Web A11y for Devs</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --color-brand-primary: oklch(0.6309 0.2351 24.27);
+        --color-brand-secondary: oklch(0.1999 0.0173 264.07);
+      }
+    </style>
+
+    <script defer>
+      document.addEventListener('DOMContentLoaded', () => {
+        const startDate = new Date('2026-05-25');
+        const dueDate = new Date(startDate);
+        dueDate.setDate(dueDate.getDate() + 14);
+
+        const dateOptions = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        };
+
+        document.querySelector('#due-date').textContent =
+          `${dueDate.toLocaleDateString('en-US', dateOptions)} (2 weeks)`;
+
+        document.querySelector('#start-date').textContent =
+          `${startDate.toLocaleDateString('en-US', dateOptions)}`;
+      });
+    </script>
+  </head>
+
+  <body class="min-h-dvh">
+    <main id="main-content" class="container mx-auto py-6" tabindex="-1">
+      <article
+        class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-900/5"
+      >
+        <h2 class="bg-brand-primary p-5 text-3xl font-semibold text-white">
+          Welcome to your Final Task!
+        </h2>
+
+        <div class="grid lg:grid-cols-2 lg:divide-x lg:divide-slate-200">
+          <!-- Assignment -->
+          <section class="flex flex-col gap-6 p-6" aria-labelledby="task-description">
+            <p id="task-description" class="leading-relaxed text-slate-700">
+              Your task is to
+              <strong class="text-brand-secondary font-semibold">create a Modal component</strong>
+              that contains a form with the following fields:
+            </p>
+
+            <ol class="border-brand-secondary/15 space-y-2.5 rounded-xl border bg-slate-50/80 p-5">
+              <li class="flex gap-3 leading-relaxed text-slate-700">
+                <span
+                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  aria-hidden="true"
+                  >1</span
+                >
+                Full Name
+              </li>
+              <li class="flex gap-3 leading-relaxed text-slate-700">
+                <span
+                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  aria-hidden="true"
+                  >2</span
+                >
+                Email
+              </li>
+              <li class="flex gap-3 leading-relaxed text-slate-700">
+                <span
+                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  aria-hidden="true"
+                  >3</span
+                >
+                Password + Confirm Password
+              </li>
+              <li class="flex gap-3 leading-relaxed text-slate-700">
+                <span
+                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  aria-hidden="true"
+                  >4</span
+                >
+                A checkbox to agree to some imaginary terms and conditions
+              </li>
+              <li class="flex gap-3 leading-relaxed text-slate-700">
+                <span
+                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                  aria-hidden="true"
+                  >5</span
+                >
+                A submit button
+              </li>
+            </ol>
+
+            <ul
+              class="border-brand-secondary/15 mt-auto space-y-2 rounded-xl border bg-slate-50/80 p-4 leading-relaxed text-slate-600"
+            >
+              <li class="flex gap-2.5">
+                <span
+                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
+                  aria-hidden="true"
+                ></span>
+                Make sure to cover the guidelines and best practices we discussed during the course
+              </li>
+              <li class="flex gap-2.5">
+                <span
+                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
+                  aria-hidden="true"
+                ></span>
+                The implementation and styles are totally up to you
+              </li>
+              <li class="flex gap-2.5">
+                <span
+                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
+                  aria-hidden="true"
+                ></span>
+                <strong class="text-brand-secondary font-semibold"
+                  >Feel free to remove this markup and start implementing your solution</strong
+                >
+              </li>
+            </ul>
+          </section>
+
+          <!-- Rules -->
+          <section class="flex flex-col gap-6 p-6" aria-labelledby="rules-heading">
+            <h3 id="rules-heading" class="text-brand-secondary text-xl font-semibold">Rules:</h3>
+
+            <ul class="mb-8! space-y-2.5">
+              <li
+                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3 leading-relaxed text-slate-700 shadow-sm"
+              >
+                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
+                <span>
+                  The modal should adhere to the accessibility guidelines we discussed during the
+                  course <strong class="text-brand-secondary font-semibold">(20pts)</strong>
+                </span>
+              </li>
+              <li
+                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
+              >
+                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
+                <span>
+                  All inputs should be properly labeled and have correct accessible attributes,
+                  roles etc
+                  <strong class="text-brand-secondary font-semibold">(15pts)</strong>
+                </span>
+              </li>
+              <li
+                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
+              >
+                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
+                <span>
+                  All inputs should be required
+                  <strong class="text-brand-secondary font-semibold">(5pts)</strong>
+                </span>
+              </li>
+              <li
+                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
+              >
+                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
+                <span>
+                  Any invalid form inputs should be properly indicated to the user, including an
+                  appropriate error message
+                  <strong class="text-brand-secondary font-semibold">(10pts)</strong>
+                </span>
+              </li>
+              <li
+                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
+              >
+                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
+                <span>
+                  Upon valid submission, the modal should be closed and a success message should be
+                  displayed to the user, next to the "Open Modal" button
+                  <strong class="text-brand-secondary font-semibold">(10pts)</strong>
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-auto grid gap-4 sm:grid-cols-2">
+              <div class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 p-4">
+                <p class="leading-relaxed text-slate-700">
+                  Total points: <strong class="text-brand-secondary font-semibold">60</strong>
+                  <br />
+                  Pass rate:
+                  <strong class="text-brand-secondary font-semibold">60% (36+ points)</strong>
+                </p>
+              </div>
+              <div class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 p-4">
+                <p class="leading-relaxed text-slate-700">
+                  Start date:
+                  <span id="start-date" class="text-brand-secondary font-semibold"></span>
+                  <br />
+                  Due date: <span id="due-date" class="text-brand-secondary font-semibold"></span>
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="space-y-4 border-t border-slate-200 p-6">
+          <aside
+            class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 px-5 py-4"
+            role="note"
+          >
+            <p class="leading-relaxed text-slate-700">
+              <strong class="text-brand-secondary font-bold">IMPORTANT:</strong> If you need a
+              deadline extension for a reasonably valid reason, please don't hesitate to reach out
+              to me.
+            </p>
+          </aside>
+
+          <p class="text-center leading-relaxed text-slate-600">
+            If you have any unclear requirements, don't hesitate to ask for clarification.
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

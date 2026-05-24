@@ -10,7 +10,6 @@
   },
   "private": true,
   "scripts": {
-    "dev": "bun --watch src/pages/**.html",
-    "start": "bun src/server.js"
+    "dev": "bun --watch src/*.html"
   }
 }
