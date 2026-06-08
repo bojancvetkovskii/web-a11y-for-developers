@@ -3,20 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="icon" type="image/jpeg" href="../public/tdl-logo.jpg" />
-
     <title>Web A11y for Devs</title>
-
-    <link rel="stylesheet" href="./styles/index.css" />
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap" rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -24,213 +15,327 @@
       @theme {
         --color-brand-primary: oklch(0.6309 0.2351 24.27);
         --color-brand-secondary: oklch(0.1999 0.0173 264.07);
+        --font-sans: "Nunito", sans-serif;
       }
     </style>
-
-    <script defer>
-      document.addEventListener('DOMContentLoaded', () => {
-        const startDate = new Date('2026-05-25');
-        const dueDate = new Date(startDate);
-        dueDate.setDate(dueDate.getDate() + 14);
-
-        const dateOptions = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        };
-
-        document.querySelector('#due-date').textContent =
-          `${dueDate.toLocaleDateString('en-US', dateOptions)} (2 weeks)`;
-
-        document.querySelector('#start-date').textContent =
-          `${startDate.toLocaleDateString('en-US', dateOptions)}`;
-      });
-    </script>
   </head>
 
-  <body class="min-h-dvh">
-    <main id="main-content" class="container mx-auto py-6" tabindex="-1">
-      <article
-        class="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-900/5"
+  <body class="bg-gray-100 p-10 font-sans text-slate-800">
+    
+    <main class="max-w-2xl mx-auto bg-white p-8 rounded shadow text-center">
+      <h1 class="text-3xl font-bold mb-4 text-brand-secondary">Final Task</h1>
+
+      <!-- Activate the modal -->
+      <button 
+        id="open-modal-btn" 
+        data-modal="registration-modal"
+        aria-haspopup="dialog"
+        class="bg-brand-primary hover:opacity-90 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-secondary cursor-pointer"
       >
-        <h2 class="bg-brand-primary p-5 text-3xl font-semibold text-white">
-          Welcome to your Final Task!
-        </h2>
+        Open Modal
+      </button>
 
-        <div class="grid lg:grid-cols-2 lg:divide-x lg:divide-slate-200">
-          <!-- Assignment -->
-          <section class="flex flex-col gap-6 p-6" aria-labelledby="task-description">
-            <p id="task-description" class="leading-relaxed text-slate-700">
-              Your task is to
-              <strong class="text-brand-secondary font-semibold">create a Modal component</strong>
-              that contains a form with the following fields:
-            </p>
-
-            <ol class="border-brand-secondary/15 space-y-2.5 rounded-xl border bg-slate-50/80 p-5">
-              <li class="flex gap-3 leading-relaxed text-slate-700">
-                <span
-                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                  aria-hidden="true"
-                  >1</span
-                >
-                Full Name
-              </li>
-              <li class="flex gap-3 leading-relaxed text-slate-700">
-                <span
-                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                  aria-hidden="true"
-                  >2</span
-                >
-                Email
-              </li>
-              <li class="flex gap-3 leading-relaxed text-slate-700">
-                <span
-                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                  aria-hidden="true"
-                  >3</span
-                >
-                Password + Confirm Password
-              </li>
-              <li class="flex gap-3 leading-relaxed text-slate-700">
-                <span
-                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                  aria-hidden="true"
-                  >4</span
-                >
-                A checkbox to agree to some imaginary terms and conditions
-              </li>
-              <li class="flex gap-3 leading-relaxed text-slate-700">
-                <span
-                  class="bg-brand-primary flex size-6 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                  aria-hidden="true"
-                  >5</span
-                >
-                A submit button
-              </li>
-            </ol>
-
-            <ul
-              class="border-brand-secondary/15 mt-auto space-y-2 rounded-xl border bg-slate-50/80 p-4 leading-relaxed text-slate-600"
-            >
-              <li class="flex gap-2.5">
-                <span
-                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
-                  aria-hidden="true"
-                ></span>
-                Make sure to cover the guidelines and best practices we discussed during the course
-              </li>
-              <li class="flex gap-2.5">
-                <span
-                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
-                  aria-hidden="true"
-                ></span>
-                The implementation and styles are totally up to you
-              </li>
-              <li class="flex gap-2.5">
-                <span
-                  class="mt-2 size-1.5 shrink-0 rounded-full bg-slate-800"
-                  aria-hidden="true"
-                ></span>
-                <strong class="text-brand-secondary font-semibold"
-                  >Feel free to remove this markup and start implementing your solution</strong
-                >
-              </li>
-            </ul>
-          </section>
-
-          <!-- Rules -->
-          <section class="flex flex-col gap-6 p-6" aria-labelledby="rules-heading">
-            <h3 id="rules-heading" class="text-brand-secondary text-xl font-semibold">Rules:</h3>
-
-            <ul class="mb-8! space-y-2.5">
-              <li
-                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3 leading-relaxed text-slate-700 shadow-sm"
-              >
-                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
-                <span>
-                  The modal should adhere to the accessibility guidelines we discussed during the
-                  course <strong class="text-brand-secondary font-semibold">(20pts)</strong>
-                </span>
-              </li>
-              <li
-                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
-              >
-                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
-                <span>
-                  All inputs should be properly labeled and have correct accessible attributes,
-                  roles etc
-                  <strong class="text-brand-secondary font-semibold">(15pts)</strong>
-                </span>
-              </li>
-              <li
-                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
-              >
-                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
-                <span>
-                  All inputs should be required
-                  <strong class="text-brand-secondary font-semibold">(5pts)</strong>
-                </span>
-              </li>
-              <li
-                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
-              >
-                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
-                <span>
-                  Any invalid form inputs should be properly indicated to the user, including an
-                  appropriate error message
-                  <strong class="text-brand-secondary font-semibold">(10pts)</strong>
-                </span>
-              </li>
-              <li
-                class="flex gap-3 rounded-lg border border-slate-100 bg-white p-3.5 leading-relaxed text-slate-700 shadow-sm"
-              >
-                <span class="text-brand-primary mt-0.5 shrink-0" aria-hidden="true">●</span>
-                <span>
-                  Upon valid submission, the modal should be closed and a success message should be
-                  displayed to the user, next to the "Open Modal" button
-                  <strong class="text-brand-secondary font-semibold">(10pts)</strong>
-                </span>
-              </li>
-            </ul>
-
-            <div class="mt-auto grid gap-4 sm:grid-cols-2">
-              <div class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 p-4">
-                <p class="leading-relaxed text-slate-700">
-                  Total points: <strong class="text-brand-secondary font-semibold">60</strong>
-                  <br />
-                  Pass rate:
-                  <strong class="text-brand-secondary font-semibold">60% (36+ points)</strong>
-                </p>
-              </div>
-              <div class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 p-4">
-                <p class="leading-relaxed text-slate-700">
-                  Start date:
-                  <span id="start-date" class="text-brand-secondary font-semibold"></span>
-                  <br />
-                  Due date: <span id="due-date" class="text-brand-secondary font-semibold"></span>
-                </p>
-              </div>
-            </div>
-          </section>
+      <div id="success-message" class="hidden mt-4 text-green-800 font-bold p-4 bg-green-100 rounded border border-green-400" role="status" aria-live="polite">
         </div>
-
-        <div class="space-y-4 border-t border-slate-200 p-6">
-          <aside
-            class="border-brand-secondary/15 rounded-xl border bg-slate-50/80 px-5 py-4"
-            role="note"
-          >
-            <p class="leading-relaxed text-slate-700">
-              <strong class="text-brand-secondary font-bold">IMPORTANT:</strong> If you need a
-              deadline extension for a reasonably valid reason, please don't hesitate to reach out
-              to me.
-            </p>
-          </aside>
-
-          <p class="text-center leading-relaxed text-slate-600">
-            If you have any unclear requirements, don't hesitate to ask for clarification.
-          </p>
-        </div>
-      </article>
     </main>
+
+    <!-- Success message notification - which is shown to the user when the form is submitted -->
+    <!-- aria-live="polite": Instructs the screen reader to wait until it finishes speaking whatever it is currently reading before announcing this new message. This prevents the website from rudely interrupting the user's flow when the message dynamically pops up. -->
+
+
+    <div class="modal-backdrop fixed inset-0 z-50 hidden flex items-center justify-center bg-gray-900/20 backdrop-blur-sm">
+
+      <!-- The content of the dialog -->
+
+      
+      <div 
+        id="registration-modal" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-labelledby="modal-title"
+        tabindex="-1"
+        class="bg-white w-full max-w-md p-6 rounded-lg shadow-lg focus:outline-none"
+      >
+        <div class="flex justify-between items-center mb-4 border-b pb-2">
+          <h2 id="modal-title" class="text-2xl font-bold text-brand-secondary">Register Here</h2>
+          <button data-dismiss aria-label="Close form" class="text-gray-500 hover:text-black text-2xl focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-secondary p-1 rounded cursor-pointer">&times;</button>
+        </div>
+
+        <form id="registration-form" novalidate>
+
+          <div class="mb-4">
+            <label for="full-name" class="block font-bold mb-1 text-slate-700">Full Name <span class="text-red-600">*</span></label>
+            <input type="text" id="full-name" autocomplete="name" required aria-required="true" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary" />
+            <p id="error-full-name" class="text-red-700 font-semibold text-sm mt-1 hidden" aria-live="assertive"></p>
+          </div>
+
+          <div class="mb-4">
+            <label for="email-address" class="block font-bold mb-1 text-slate-700">Email <span class="text-red-600">*</span></label>
+            <input type="email" id="email-address" autocomplete="email" required aria-required="true" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary" />
+            <p id="error-email-address" class="text-red-700 font-semibold text-sm mt-1 hidden" aria-live="assertive"></p>
+          </div>
+
+          <div class="mb-4">
+            <label for="password" class="block font-bold mb-1 text-slate-700">Password <span class="text-red-600">*</span></label>
+            <input type="password" id="password" autocomplete="new-password" required aria-required="true" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary" />
+            <p id="error-password" class="text-red-700 font-semibold text-sm mt-1 hidden" aria-live="assertive"></p>
+          </div>
+
+          <div class="mb-4">
+            <label for="confirm-password" class="block font-bold mb-1 text-slate-700">Confirm Password <span class="text-red-600">*</span></label>
+            <input type="password" id="confirm-password" autocomplete="new-password" required aria-required="true" class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary" />
+            <p id="error-confirm-password" class="text-red-700 font-semibold text-sm mt-1 hidden" aria-live="assertive"></p>
+          </div>
+
+          <div class="mb-6">
+            <label for="terms-checkbox" class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="terms-checkbox" required aria-required="true" class="w-4 h-4 accent-brand-primary focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary" />
+              <span class="text-slate-700 font-medium">I agree to terms and conditions <span class="text-red-600">*</span></span>
+            </label>
+            <p id="error-terms-checkbox" class="text-red-700 font-semibold text-sm mt-1 hidden" aria-live="assertive"></p>
+          </div>
+
+          <div class="flex justify-end gap-2 border-t pt-4">
+            <button type="button" data-dismiss class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded font-bold text-slate-700 focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-slate-500 cursor-pointer">Cancel</button>
+            
+            <button type="submit" id="submit-button" class="flex items-center bg-brand-secondary hover:opacity-90 text-white px-4 py-2 rounded font-bold focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary transition-opacity cursor-pointer">
+              <span id="submit-button-text">Submit</span>
+              <svg id="loading-spinner" class="hidden w-5 h-5 ml-2 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <script>
+
+      // Modal logic
+      const modalTriggers = document.querySelectorAll('[data-modal]');
+
+      // Pressing the Escape key closes the modal and then returns focus to the trigger button
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+
+        const openBackdrop = document.querySelector('.modal-backdrop:not(.hidden)');
+        if (!openBackdrop) return;
+
+        const modalId = openBackdrop.firstElementChild.id;
+        const activeTrigger = document.querySelector(`[data-modal="${modalId}"]`);
+
+        e.preventDefault();
+        toggleModal(activeTrigger, false);
+      });
+
+      modalTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          document.getElementById('success-message').classList.add('hidden'); 
+          toggleModal(trigger, true);
+        });
+
+        const backdrop = getBackdrop(trigger);
+        if (!backdrop) return;
+
+        backdrop.addEventListener('click', (e) => {
+          if (e.target !== backdrop) return;
+
+          e.preventDefault();
+          toggleModal(trigger, false);
+        });
+
+        const modal = backdrop.firstElementChild;
+
+        modal.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab') return;
+
+          const focusables = getFocusables(modal);
+          const firstFocusable = focusables[0];
+          const lastFocusable = focusables[focusables.length - 1];
+
+          if (e.shiftKey) {
+            if (e.target === firstFocusable) {
+              e.preventDefault();
+              lastFocusable.focus();
+            }
+          } else {
+            if (e.target === lastFocusable) {
+              e.preventDefault();
+              firstFocusable.focus();
+            }
+          }
+        });
+
+        const closeButtons = backdrop.querySelectorAll('[data-dismiss]');
+
+        closeButtons.forEach((closeButton) => {
+          closeButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleModal(trigger, false);
+          })
+        })
+      });
+
+      function getBackdrop(trigger) {
+        const modal = document.getElementById(trigger.getAttribute('data-modal'));
+        return modal?.closest('.modal-backdrop');
+      }
+
+      function toggleModal(trigger, open) {
+        const backdrop = getBackdrop(trigger);
+        if (!backdrop) return;
+
+        backdrop.classList.toggle('hidden', !open);
+
+        if (open) {
+          backdrop.firstElementChild?.focus();
+        } else {
+          trigger.focus();
+          document.getElementById('registration-form').reset(); 
+        }
+      }
+
+      function getFocusables(container) {
+        return container.querySelectorAll(
+          'a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable], audio[controls], video[controls], summary, [tabindex^="0"], [tabindex^="1"], [tabindex^="2"], [tabindex^="3"], [tabindex^="4"], [tabindex^="5"], [tabindex^="6"], [tabindex^="7"], [tabindex^="8"], [tabindex^="9"]',
+        );
+      }
+
+      // Form validation and loading logic
+
+      const form = document.getElementById('registration-form');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const fullNameInput = document.getElementById('full-name');
+        const emailAddressInput = document.getElementById('email-address');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const termsCheckboxInput = document.getElementById('terms-checkbox');
+
+        
+        let isFormValid = true;
+        let firstErrorElement = null; 
+        
+        // "Safety" checks
+
+        // 1. Check Full Name
+        if (fullNameInput.value.trim() === '') {
+          showError(fullNameInput, 'error-full-name', 'Please enter your name.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = fullNameInput;
+        } else {
+          clearError(fullNameInput, 'error-full-name');
+        }
+
+        // 2. Check Email Address
+        if (emailAddressInput.value.trim() === '') {
+          showError(emailAddressInput, 'error-email-address', 'Please enter your email.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = emailAddressInput;
+        } else if (!emailAddressInput.value.includes('@')) {
+          showError(emailAddressInput, 'error-email-address', 'Email must contain an @ symbol.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = emailAddressInput;
+        } else {
+          clearError(emailAddressInput, 'error-email-address');
+        }
+
+        // 3. Check Password
+        if (passwordInput.value === '') {
+          showError(passwordInput, 'error-password', 'Please enter a password.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = passwordInput;
+        } else {
+          clearError(passwordInput, 'error-password');
+        }
+
+        // 4. Check Confirm Password
+        if (confirmPasswordInput.value === '') {
+          showError(confirmPasswordInput, 'error-confirm-password', 'Please confirm your password.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = confirmPasswordInput;
+        } else if (confirmPasswordInput.value !== passwordInput.value) {
+          showError(confirmPasswordInput, 'error-confirm-password', 'Passwords do not match.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = confirmPasswordInput;
+        } else {
+          clearError(confirmPasswordInput, 'error-confirm-password');
+        }
+
+        // 5. Check Terms Checkbox
+        if (!termsCheckboxInput.checked) {
+          showError(termsCheckboxInput, 'error-terms-checkbox', 'You must agree to the terms.');
+          isFormValid = false;
+          if (!firstErrorElement) firstErrorElement = termsCheckboxInput;
+        } else {
+          clearError(termsCheckboxInput, 'error-terms-checkbox');
+        }
+
+        // Submit check
+
+
+        if (isFormValid === false) {
+          firstErrorElement.focus();
+        } else {
+
+          const submitButton = document.getElementById('submit-button');
+          const submitButtonText = document.getElementById('submit-button-text');
+          const spinner = document.getElementById('loading-spinner');
+          const successMessage = document.getElementById('success-message');
+
+          // 1. Disable button and show spinner
+
+          submitButton.disabled = true;
+          submitButton.classList.add('opacity-70', 'cursor-not-allowed');
+          submitButtonText.textContent = 'Loading...';
+          spinner.classList.remove('hidden');
+          successMessage.textContent = ''; 
+
+          // 2. Wait 3 seconds
+
+          setTimeout(() => {
+            // Revert button state
+            submitButton.disabled = false;
+            submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+            submitButtonText.textContent = 'Submit';
+            spinner.classList.add('hidden');
+
+            // Close modal
+            const trigger = document.querySelector('[data-modal="registration-modal"]');
+            toggleModal(trigger, false);
+
+            // Show polite success message
+            successMessage.textContent = 'Welcome to your dashboard!';
+            successMessage.classList.remove('hidden');
+          }, 3000);
+        }
+      });
+
+      // Show Individual Errors
+      function showError(inputElement, errorId, message) {
+        const errorText = document.getElementById(errorId);
+        errorText.textContent = message;
+        errorText.classList.remove('hidden');
+        
+        inputElement.setAttribute('aria-invalid', 'true');
+        inputElement.setAttribute('aria-describedby', errorId);
+        inputElement.classList.add('border-red-500');
+      }
+
+      // Clear Individual Errors
+      function clearError(inputElement, errorId) {
+        const errorText = document.getElementById(errorId);
+        errorText.classList.add('hidden');
+        
+        inputElement.removeAttribute('aria-invalid');
+        inputElement.removeAttribute('aria-describedby');
+        inputElement.classList.remove('border-red-500');
+      }
+    </script>
   </body>
 </html>
